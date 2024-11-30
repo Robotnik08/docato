@@ -1,0 +1,29 @@
+{
+    "output": "path/to/output_folder",
+
+    "header": "path/to/header.md",
+    "footer": "path/to/footer.md",
+    "index_footer": "path/to/index_footer.md",
+
+    "documentation_config": {
+        "output_name": "demo",
+        "title": "Documentation",
+        "index_page": "path/to/index.md",
+        "favicon": "path/to/favicon.ico",
+        "styles": ["path/to/style.css"],
+        "scripts": ["path/to/script.js"],
+        "pages": [
+            {
+                "title": "Page 1",
+                "file": "path/to/page1.md"
+            },
+            {
+                "title": "Page 2",
+                "file": "path/to/page2.md"
+            }
+        ],
+        "variables": {
+            "variable_name": "variable_value"
+        }
+    }
+}

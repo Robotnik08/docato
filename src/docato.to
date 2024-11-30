@@ -1,0 +1,29 @@
+import "../imports/json"
+import "../imports/markdown"
+
+make object config, documentation_config = {}
+make string output_folder = ""
+
+define void compile_documentation(string output_folder) {
+    // fetch configuration
+    make file = read("docato-config.json")
+    set config = json_parse(file)
+
+    do validate_config("config", ["output", "header", "footer", "index_footer", "documentation_config"], config)
+
+    set documentation_config = config->documentation_config
+
+    do validate_config("documentation_config", ["title", "index_page", "favicon", "styles", "scripts", "pages", "variables", "output_name"], documentation_config)    
+
+    // remove output folder
+    do deleteDirectory(output_folder, true) catch {}
+
+    // create output folder
+    set output_folder = `{output_folder}/{documentation_config->output_name}`
+    do sayln(`Creating output folder: {output_folder}`)
+    do createDirectory(output_folder)
+}
+
+define void validate_config(string config_name, array fields, object config) {
+    if config->(field) == null then throw(`Field not found on {config_name}: {field}`) for field in fields
+}
