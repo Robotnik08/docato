@@ -1,6 +1,6 @@
 # Docato to-do list
 
-- [ ] Read configuration from a file.
+- [X] Read configuration from a file.
 - [ ] Compile the documentation.
 - [ ] Add support for variables.
 - [ ] Add support for built-in variables.

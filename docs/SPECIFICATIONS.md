@@ -8,7 +8,8 @@
 {
     "output": "path/to/output_folder",
 
-    "header": "path/to/header.md",
+    "header": "path/to/header.html",
+    "page_header": "path/to/page_header.md",
     "footer": "path/to/footer.md",
     "index_footer": "path/to/index_footer.md",
 

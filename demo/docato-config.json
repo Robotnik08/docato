@@ -1,25 +1,26 @@
 {
-    "output": "path/to/output_folder",
+    "output": "output",
 
-    "header": "path/to/header.md",
-    "footer": "path/to/footer.md",
-    "index_footer": "path/to/index_footer.md",
+    "page_header": "source/components/page_header.md",
+    "header": "source/components/header.html",
+    "footer": "source/components/footer.md",
+    "index_footer": "source/components/index_footer.md",
 
     "documentation_config": {
         "output_name": "demo",
-        "title": "Documentation",
-        "index_page": "path/to/index.md",
-        "favicon": "path/to/favicon.ico",
-        "styles": ["path/to/style.css"],
-        "scripts": ["path/to/script.js"],
+        "title": "Demo Documentation",
+        "index_page": "source/index.md",
+        "favicon": "source/assets/img/favicon.ico",
+        "styles": ["source/assets/css/style.css"],
+        "scripts": ["source/assets/js/script.js"],
         "pages": [
             {
                 "title": "Page 1",
-                "file": "path/to/page1.md"
+                "file": "source/page1.md"
             },
             {
                 "title": "Page 2",
-                "file": "path/to/page2.md"
+                "file": "source/page2.md"
             }
         ],
         "variables": {
