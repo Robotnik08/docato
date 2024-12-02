@@ -10,17 +10,20 @@
         "output_name": "demo",
         "title": "Demo Documentation",
         "index_page": "source/index.md",
+        "index_title": "Home",
         "favicon": "source/assets/img/favicon.ico",
         "styles": ["source/assets/css/style.css"],
         "scripts": ["source/assets/js/script.js"],
         "pages": [
             {
                 "title": "Page 1",
-                "file": "source/page1.md"
+                "source": "source/page1.md",
+                "id": "1"
             },
             {
                 "title": "Page 2",
-                "file": "source/page2.md"
+                "source": "source/page2.md",
+                "id": "2"
             }
         ],
         "variables": {

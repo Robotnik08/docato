@@ -23,11 +23,11 @@
         "pages": [
             {
                 "title": "Page 1",
-                "file": "path/to/page1.md"
+                "source": "path/to/page1.md"
             },
             {
                 "title": "Page 2",
-                "file": "path/to/page2.md"
+                "source": "path/to/page2.md"
             }
         ],
         "variables": {
@@ -54,7 +54,7 @@
 - `pages` (array of objects): List of pages.
     - page:
         - `title` (string): Title of the page.
-        - `file` (string): Path to the markdown file.
+        - `source` (string): Path to the markdown file.
 
 
 ## Page Structure

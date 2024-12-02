@@ -28,6 +28,11 @@ define void compile_documentation() {
 
     // compile index page
     do compilePage(documentation_config->index_page, `{output_folder}/index.html`, "index", -1)
+
+    // compile pages
+    do map(documentation_config->pages, void (page, index) => {
+        do compilePage(page->source, `{output_folder}/{page->id}.html`, page->title, index)
+    })
 }
 
 define void validate_config(string config_name, array fields, object config) {
@@ -36,10 +41,10 @@ define void validate_config(string config_name, array fields, object config) {
 
 define void compilePage(string page_source, string page_output, string name, int page_index) {
     if exists(page_source) then {
-        const contents = convertDocatoVariables(read(page_source), name, page_index) |> markdown_to_html
-        const page_header = convertDocatoVariables(read(config->page_header), name, page_index) |> markdown_to_html
+        const contents = convertDocatoVariables(markdown_to_html(read(page_source)), name, page_index)
+        const page_header = convertDocatoVariables(markdown_to_html(read(config->page_header)), name, page_index)
         const header = convertDocatoVariables(read(config->header), name, page_index)
-        const footer = convertDocatoVariables(read(config->footer), name, page_index) |> markdown_to_html
+        const footer = convertDocatoVariables(markdown_to_html(read(config->footer)), name, page_index)
         
         do sayln(`Compiling page: {page_source} -> {page_output}`)
 
@@ -59,17 +64,26 @@ define string convertDocatoVariables(string content, string page, int page_index
 
     if page_index == 0 then {
         set content = stringReplace(content, "{$previous_page}", "")
+        set content = stringReplace(content, "{#previous}", "")
     } else if page_index == 1 then {
-        set content = stringReplace(content, "{$previous_page}", documentation_config->index_page)
+        set content = stringReplace(content, "{$previous_page}", documentation_config->index_title)
+        set content = stringReplace(content, "{#previous}", `<a href="index.html">{documentation_config->index_title}</a>`)
     } else {
-        set content = stringReplace(content, "{$previous_page}", documentation_config->pages#(page_index - 1)->title)
+        set content = stringReplace(content, "{$previous_page}", documentation_config->pages#(page_index - 2)->title)
+        set content = stringReplace(content, "{#previous}", `<a href="{documentation_config->pages#(page_index - 2)->id}.html">{documentation_config->pages#(page_index - 2)->title}</a>`)
     }
 
     if page_index == (int)documentation_config->pages then {
         set content = stringReplace(content, "{$next_page}", "")
+        set content = stringReplace(content, "{#next}", "")
     } else {
         set content = stringReplace(content, "{$next_page}", documentation_config->pages#(page_index)->title)
+        set content = stringReplace(content, "{#next}", `<a href="{documentation_config->pages#(page_index)->id}.html">{documentation_config->pages#(page_index)->title}</a>`)
     }
+
+    set content = stringReplace(content, "{#index}", `<a href="index.html">{documentation_config->index_title}</a>`)
+    set content = stringReplace(content, `\{#{p->id}}`, `<a href="{p->id}.html">{p->title}</a>`) for p in documentation_config->pages
+
 
     return content
 }
