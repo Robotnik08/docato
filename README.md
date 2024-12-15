@@ -5,7 +5,7 @@ Docato is originally made for the Dosato documentation, but we aim for it to be 
 
 ## Installation
 
-To install Docato, you need to have Dosato installed. You can install Dosato by following the instructions on the [Dosato GitHub page](https://github.com/Robotnik08/cdosato).<br>
+To install Docato, you need to have Dosato installed. You can install Dosato by following the instructions on going [here](https://github.com/Robotnik08/cdosato/releases/latest).<br>
 
 After you have Dosato installed, you can run Docato by running the following command in the terminal:
 
