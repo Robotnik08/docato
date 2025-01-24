@@ -1,4 +1,4 @@
-# {$title}
+# {$chapter} {$title}
 
 - {#index}
 - {#1}

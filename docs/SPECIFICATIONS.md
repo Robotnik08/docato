@@ -78,9 +78,19 @@ Any instances of `{$previous_page}` in the markdown file will be replaced with t
 Any instances of `{$next_page}` in the markdown file will be replaced with the name of the next page.<br>
 Any instances of `{$all_pages}` in the markdown file will be replaced with a list of all the pages in the documentation. (for the index page)
 
+#### Chaptering
+
+Each page has a chapter and subchapter number. <br>
+Any instances of `{$chapter}` in the markdown file will be replaced with the chapter number of the page (chapter.subchapter)<br>
+Any instances of `{$smallchapter}` in the markdown file will be replaced with the chapter + the current smallchapter number of the page (chapter.subchapter.smallchapter) Smallchapter starts at 1, and increments by 1 for each new smallchapter.
+
 #### Link to other pages
 
 Any instances of `{#<page_name>}` in the markdown file will be replaced with a link to the specified page, the page name should be the same as the title of the page.
 Any instances of `{#<page_name>::<url_extension>}` in the markdown file will be replaced with a link to the specified page with the specified url extension.
 Any instances of `{#next}` in the markdown file will be replaced with a link to the next page.
 Any instances of `{#previous}` in the markdown file will be replaced with a link to the previous page.
+
+#### Insertion of components
+
+Any instances of `{@<component_name>}` in the markdown file will be replaced with the content of the specified component file (markdown). You don't need to specify the file extension (it will automatically find .md), The file is in the components directory.
